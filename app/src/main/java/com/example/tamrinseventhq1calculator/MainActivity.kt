@@ -52,31 +52,65 @@ class MainActivity : AppCompatActivity() {
                     }
                 } else {
                     if (view == binding.butDelete) {
-                        binding.tvEnterAndResult.text=" "
-                    }
-                    else {
-                        binding.tvEnterAndResult.text = binding.tvEnterAndResult.text.toString() + view.text
+                        binding.tvEnterAndResult.text = " "
+                    } else {
+                        binding.tvEnterAndResult.text =
+                            binding.tvEnterAndResult.text.toString() + view.text
                     }
                 }
             }
-            Toast.makeText(this,"${view.text}",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "${view.text}", Toast.LENGTH_SHORT).show()
         }
     }
-    fun solutionOfText(view:View){
-        if(view is Button){
-            if (view==binding.butEqual){
-                binding.tvEnterAndResult.text="0"
-                Toast.makeText(this,"${view.text}",Toast.LENGTH_SHORT).show()
+
+    fun solutionOfText(view: View) {
+        if (view is Button) {
+            if (view == binding.butEqual) {
+               var solution = checkTextForSolve(binding.tvEnterAndResult.text.toString()).toString()
+                binding.tvEnterAndResult.text = solution
+                Toast.makeText(this, "${view.text}", Toast.LENGTH_SHORT).show()
             }
         }
     }
-   fun checkTextForSolve(){
-       var listButtonText= mutableListOf(binding.butPlus.text,binding.butMinus.text,binding.butTimes.text,binding.butDivide.text)
-       var checkString=binding.tvEnterAndResult.text.toString()
-       if (!binding.tvEnterAndResult.text.isBlank()){
-          for (i in checkString.indices){
 
-          }
-       }
-   }
+    fun checkTextForSolve(checkS: String) :Int{
+        var listButtonText = mutableListOf(
+            '+',
+            '-',
+            'x',
+            '÷'
+        )
+        var checkString = checkS//binding.tvEnterAndResult.text.toString()
+        var calculator=Calculator()
+        //if (binding.tvEnterAndResult.text.isNotBlank()) {
+        for (i in checkString.indices) {
+            val opInText: MutableList<Char> = ArrayList()
+            for (operator in listButtonText) {
+                if (checkString[i] == operator) {
+                    var c = checkString.substring(0, i - 1).toInt()
+                    opInText.add(operator)
+                    var b = checkString.drop(i ).toInt()
+//                    when (operator) {
+//                        '+' -> Calculator.add(c, b)
+//                        '-' -> Calculator.minus(c, b)
+//                        'x' -> Calculator.multiplication(c, b)
+//                        '÷' -> Calculator.division(c, b)
+//                    }
+                        if (opInText.isEmpty()) {
+                            calculator.add(c)
+                        } else {
+//                            when (opInText[opInText.indexOf(operator) - 1]) {
+//                                '+' -> Calculator.add(c)
+//                                '-' -> Calculator.minus(c)
+//                                'x' -> Calculator.multiplication(c)
+//                                '÷' -> Calculator.division(c)
+//                            }
+                        }
+                }
+
+            }
+        }
+        return calculator.memory
+    }
+    //}
 }

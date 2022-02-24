@@ -31,12 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="9">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <Button
@@ -56,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.6"
                 android:backgroundTint="@color/gray"
                 android:onClick="updateTextview"
                 android:text="@string/delete"
@@ -67,7 +68,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <Button
@@ -80,7 +81,8 @@
                 android:onClick="updateTextview"
                 android:text="@string/seven"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp"
+                android:textAlignment="center"/>
 
             <Button
                 android:id="@+id/but_eight"
@@ -92,7 +94,8 @@
                 android:onClick="updateTextview"
                 android:text="@string/eight"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp"
+                android:textAlignment="center"/>
 
             <Button
                 android:id="@+id/but_nine"
@@ -104,7 +107,8 @@
                 android:onClick="updateTextview"
                 android:text="@string/nine"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp"
+                android:textAlignment="center"/>
 
             <Button
                 android:id="@+id/but_divide"
@@ -117,13 +121,14 @@
                 android:onClick="updateTextview"
                 android:text="@string/divide"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp"
+                android:textAlignment="center"/>
         </LinearLayout>
         <!--Second Line of Button-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <Button
@@ -136,7 +141,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/four"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_five"
@@ -148,7 +153,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/five"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_six"
@@ -160,7 +165,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/six"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_times"
@@ -173,13 +178,13 @@
                 android:onClick="updateTextview"
                 android:text="@string/times"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="15sp" />
         </LinearLayout>
         <!--Third Line of Button-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <Button
@@ -192,7 +197,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/one"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_twe"
@@ -204,7 +209,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/twe"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_three"
@@ -216,7 +221,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/three"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_minus"
@@ -229,13 +234,13 @@
                 android:onClick="updateTextview"
                 android:text="@string/minus"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
         </LinearLayout>
         <!--final Line of Button-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <Button
@@ -248,7 +253,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/dot"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_zero"
@@ -261,7 +266,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/zero"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_equal"
@@ -274,7 +279,7 @@
                 android:onClick="solutionOfText"
                 android:text="@string/equal"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@+id/but_plus"
@@ -287,7 +292,7 @@
                 android:onClick="updateTextview"
                 android:text="@string/plus"
                 android:textColor="@color/white"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
         </LinearLayout>
 
     </LinearLayout>
