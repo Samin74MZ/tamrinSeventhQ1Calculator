@@ -47,12 +47,15 @@ class MainActivity : AppCompatActivity() {
                     if (view == binding.butDot) {
                         binding.tvEnterAndResult.text =
                             binding.tvEnterAndResult.text.toString() + "0" + view.text
+                    }else if (view==binding.butMinus){
+                        binding.tvEnterAndResult.text =
+                            binding.tvEnterAndResult.text.toString() + view.text
                     } else {
                         view.isEnabled = true
                     }
                 } else {
                     if (view == binding.butDelete) {
-                        binding.tvEnterAndResult.text = " "
+                        binding.tvEnterAndResult.text = ""
                     } else {
                         binding.tvEnterAndResult.text =
                             binding.tvEnterAndResult.text.toString() + view.text
@@ -66,22 +69,18 @@ class MainActivity : AppCompatActivity() {
     fun solutionOfText(view: View) {
         if (view is Button) {
             if (view == binding.butEqual) {
-               var solution = checkTextForSolve(binding.tvEnterAndResult.text.toString()).toString()
+               var solution = checkTextForSolve(binding.tvEnterAndResult.text.toString())
                 binding.tvEnterAndResult.text = solution
                 Toast.makeText(this, "${view.text}", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    fun checkTextForSolve(checkS: String) :Int{
-        var listButtonText = mutableListOf(
-            '+',
-            '-',
-            'x',
-            '÷'
-        )
+    private fun checkTextForSolve(checkS: String):String {
+        var listButtonText = arrayListOf('+', '-', 'x', '÷')
         var checkString = checkS//binding.tvEnterAndResult.text.toString()
         var calculator=Calculator()
+        var x=0
         //if (binding.tvEnterAndResult.text.isNotBlank()) {
         for (i in checkString.indices) {
             val opInText: MutableList<Char> = ArrayList()
@@ -89,7 +88,8 @@ class MainActivity : AppCompatActivity() {
                 if (checkString[i] == operator) {
                     var c = checkString.substring(0, i - 1).toInt()
                     opInText.add(operator)
-                    var b = checkString.drop(i ).toInt()
+                //    var b = checkString.drop(i ).toInt()
+             //       x= calculator.add(c)
 //                    when (operator) {
 //                        '+' -> Calculator.add(c, b)
 //                        '-' -> Calculator.minus(c, b)
@@ -97,20 +97,20 @@ class MainActivity : AppCompatActivity() {
 //                        '÷' -> Calculator.division(c, b)
 //                    }
                         if (opInText.isEmpty()) {
-                            calculator.add(c)
+                          x= calculator.add(c)
                         } else {
-//                            when (opInText[opInText.indexOf(operator) - 1]) {
-//                                '+' -> Calculator.add(c)
-//                                '-' -> Calculator.minus(c)
-//                                'x' -> Calculator.multiplication(c)
-//                                '÷' -> Calculator.division(c)
-//                            }
+                           when (opInText[opInText.indexOf(operator) - 1]) {
+                                '+' -> x=calculator.add(c)
+                                '-' -> x=calculator.minus(c)
+                                'x' -> x=calculator.multiplication(c)
+                                '÷' -> x=calculator.division(c)
+                            }
                         }
                 }
 
             }
         }
-        return calculator.memory
+       return x.toString()
     }
     //}
 }
