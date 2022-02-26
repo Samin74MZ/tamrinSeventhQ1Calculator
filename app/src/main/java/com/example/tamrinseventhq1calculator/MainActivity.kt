@@ -95,24 +95,38 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
         val numInText: MutableList<Int> = ArrayList()
         var j = 0
+        var k=0
         for (i in indexOfOp) {
-            if (j < checkString.length) {
-                var c = checkString.substring(j, i).toInt()
-                numInText.add(c)
-                j += i + 1
+            if (checkS[0]=='-'){
+                j=i+1
+                k=i+2
+                if (j < checkString.length) {
+                    var c = checkString.substring(j, k).toInt()
+                    numInText.add(c)
+                    j += i+2
+                }
+            }else {
+                if (j < checkString.length) {
+                    var c = checkString.substring(j, i).toInt()
+                    numInText.add(c)
+                    j += i + 1
+                }
             }
         }
-        var finalNumber = checkString.drop(j).toInt()
-        var f=finalNumber
-        numInText.add(finalNumber)
+        if (checkS[0]!='-') {
+            var finalNumber = checkString.drop(j).toInt()
+            var f = finalNumber
+            numInText.add(finalNumber)
+        }
 
         for (k in 0 until opInText.size) {
             var l=k
             if (opInText[0]=='-'&& indexOfOp[0]==0){
-                Calculator.memory=Calculator.minus(numInText[0])
-                l=0
+                Calculator.memory=Calculator.add(numInText[0])
+                l=1
             }else{
                 Calculator.memory=Calculator.add(numInText[0])
                 l=k
