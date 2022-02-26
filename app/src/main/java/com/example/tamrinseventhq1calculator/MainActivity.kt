@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.tamrinseventhq1calculator.databinding.ActivityMainBinding
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -81,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         var listButtonText = arrayListOf('+', '-', 'x', '÷')
         var checkString = checkS
         var x = 0
+        var y=""
         var numberOfOperator = 0
         val opInText: MutableList<Char> = ArrayList()
         var indexOfOp: MutableList<Int> = ArrayList()
@@ -102,7 +104,7 @@ class MainActivity : AppCompatActivity() {
                 j += i + 1
             }
         }
-        var finalNumber = checkString.drop(indexOfOp[indexOfOp.lastIndex]).toInt()
+        var finalNumber = checkString.drop(j).toInt()
         var f=finalNumber
         numInText.add(finalNumber)
 
@@ -118,18 +120,31 @@ class MainActivity : AppCompatActivity() {
                 when (opInText[l]) {
                     '+' -> {
                         x = Calculator.add(numInText[l + 1])
+                        y=x.toString()
+
                     }
                     '-' -> {
-                        x = Calculator.minus(-numInText[l + 1])
+                        x = Calculator.minus(numInText[l + 1])
+                        y= x.toString()
+
                     }
                     'x' -> {
                         x = Calculator.multiplication(numInText[l + 1])
+                        y= x.toString()
+
                     }
                     '÷' -> {
-                        x = Calculator.division(numInText[l + 1])
+                        if (numInText[l+1]!=0){
+                            x = Calculator.division(numInText[l + 1])
+                            y= x.toString()
+
+                        }else {
+                             y="Cannot divide by zero"
+
+                        }
                     }
                 }
         }
-        return x.toString()
+        return y
     }
 }

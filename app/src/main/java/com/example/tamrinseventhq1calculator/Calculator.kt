@@ -30,13 +30,13 @@ object Calculator {
     }
 
     fun multiplication(input: Int): Int {
-        this.memory *= input
+        this.memory = this.memory*input
         return this.memory
     }
 
     fun division(input: Int, input1: Int): Int {
-        this.memory = input / input1
-        return this.memory
+            this.memory = input / input1
+            return this.memory
     }
 
     fun division(input: Int): Int {
