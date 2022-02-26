@@ -2,41 +2,48 @@ package com.example.tamrinseventhq1calculator
 
 import java.lang.Exception
 
-class  Calculator{
-     var memory=0
-    fun add(input:Int,input1: Int):Int{
-        this.memory=input+input1
+object Calculator {
+    var memory = 0
+    fun add(input: Int, input1: Int): Int {
+        this.memory = input + input1
         return this.memory
     }
-    fun add(input: Int):Int{
-       this.memory+=input
+
+    fun add(input: Int): Int {
+        this.memory += input
         return this.memory
     }
-    fun minus(input: Int,input1: Int):Int{
-        this.memory=input-input1
+
+    fun minus(input: Int, input1: Int): Int {
+        this.memory = input - input1
         return this.memory
     }
-    fun minus(input: Int):Int{
-        this.memory-=input
+
+    fun minus(input: Int): Int {
+        this.memory -= input
         return this.memory
     }
-    fun multiplication(input: Int,input1: Int):Int{
-        this.memory=input*input1
+
+    fun multiplication(input: Int, input1: Int): Int {
+        this.memory = input * input1
         return this.memory
     }
-    fun multiplication(input: Int):Int{
-       this.memory*=input
+
+    fun multiplication(input: Int): Int {
+        this.memory *= input
         return this.memory
     }
-    fun division(input: Int,input1: Int):Int{
-        this.memory=input/input1
+
+    fun division(input: Int, input1: Int): Int {
+        this.memory = input / input1
         return this.memory
     }
-    fun division(input: Int):Int{
+
+    fun division(input: Int): Int {
         return try {
-            this.memory/=input
+            this.memory /= input
             this.memory
-        }catch (e:Exception){
+        } catch (e: Exception) {
             println("error")
             0
         }

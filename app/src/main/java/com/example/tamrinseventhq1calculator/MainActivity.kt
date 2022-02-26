@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     if (view == binding.butDelete) {
                         binding.tvEnterAndResult.text = ""
+                        Calculator.memory=0
                     } else {
                         binding.tvEnterAndResult.text =
                             binding.tvEnterAndResult.text.toString() + view.text
@@ -79,7 +80,6 @@ class MainActivity : AppCompatActivity() {
     private fun checkTextForSolve(checkS: String): String {
         var listButtonText = arrayListOf('+', '-', 'x', '÷')
         var checkString = checkS
-        var calculator = Calculator()
         var x = 0
         var numberOfOperator = 0
         val opInText: MutableList<Char> = ArrayList()
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             for (operator in listButtonText) {
                 if (checkS[i] == operator) {
                     numberOfOperator++
-                    opInText.add(operator)
+                    opInText.add(checkS[i])
                     indexOfOp.add(i)
                 }
             }
@@ -96,31 +96,39 @@ class MainActivity : AppCompatActivity() {
         val numInText: MutableList<Int> = ArrayList()
         var j = 0
         for (i in indexOfOp) {
-            if (j < checkString.length ) {
+            if (j < checkString.length) {
                 var c = checkString.substring(j, i).toInt()
                 numInText.add(c)
-               j+= i +1
+                j += i + 1
             }
         }
-        var finalNumber = checkString.drop(indexOfOp[indexOfOp.size - 1]).toInt()
+        var finalNumber = checkString.drop(indexOfOp[indexOfOp.lastIndex]).toInt()
+        var f=finalNumber
         numInText.add(finalNumber)
 
         for (k in 0 until opInText.size) {
-            if (k == 0) {
-                when (opInText[0]) {
-                    '+' -> x = calculator.add(numInText[0], numInText[1])
-                    '-' -> x = calculator.minus(numInText[0], numInText[1])
-                    'x' -> x = calculator.multiplication(numInText[0], numInText[1])
-                    '÷' -> x = calculator.division(numInText[0], numInText[1])
-                }
-            } else {
-                when (opInText[k]) {
-                                '+' -> x = calculator.add(numInText[k+1])
-                                '-' -> x = calculator.minus(numInText[k+1])
-                                'x' -> x = calculator.multiplication(numInText[k+1])
-                                '÷' -> x = calculator.division(numInText[k+1])
-                            }
+            var l=k
+            if (opInText[0]=='-'&& indexOfOp[0]==0){
+                Calculator.memory=Calculator.minus(numInText[0])
+                l=0
+            }else{
+                Calculator.memory=Calculator.add(numInText[0])
+                l=k
             }
+                when (opInText[l]) {
+                    '+' -> {
+                        x = Calculator.add(numInText[l + 1])
+                    }
+                    '-' -> {
+                        x = Calculator.minus(-numInText[l + 1])
+                    }
+                    'x' -> {
+                        x = Calculator.multiplication(numInText[l + 1])
+                    }
+                    '÷' -> {
+                        x = Calculator.division(numInText[l + 1])
+                    }
+                }
         }
         return x.toString()
     }
