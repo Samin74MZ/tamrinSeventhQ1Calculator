@@ -48,10 +48,12 @@ class MainActivity : AppCompatActivity() {
                     if (view == binding.butDot) {
                         binding.tvEnterAndResult.text =
                             binding.tvEnterAndResult.text.toString() + "0" + view.text
-                    } else if (view == binding.butMinus) {
-                        binding.tvEnterAndResult.text =
-                            binding.tvEnterAndResult.text.toString() + view.text
-                    } else {
+                    }
+//                    else if (view == binding.butMinus) {
+//                        binding.tvEnterAndResult.text =
+//                            binding.tvEnterAndResult.text.toString() + view.text
+//                    }
+                    else {
                         view.isEnabled = true
                     }
                 } else {
